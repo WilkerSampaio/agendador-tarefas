@@ -2,23 +2,22 @@ package com.wilker.agendadortarefas.infrastructure.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.util.Base64;
 import java.util.Date;
 
 @Service
 public class JwtUtil {
 
     // Chave secreta usada para assinar e verificar tokens JWT
-    private final SecretKey secretKey;
+    private final String secretKey = "IKASJUIHDUBwjansjndjnuwKKJMJSUIWUNNCKpasiiwJWJ";
 
-    //Construtor que gera uma chave secreta segura para assinatura usando o algoritimo HS256
-    public JwtUtil(){
-        //Gera uma chave secreta para o algoritimo de assinatura HS256
-        this.secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private SecretKey getSecretKey(){
+        byte[] key = Base64.getDecoder().decode(secretKey);
+        return Keys.hmacShaKeyFor(key);
     }
 
     // Extrai as claims do token JWT (informações adicionais do token)
