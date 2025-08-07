@@ -4,6 +4,8 @@ import com.wilker.agendadortarefas.infrastructure.dto.TarefasDTO;
 import com.wilker.agendadortarefas.infrastructure.entity.TarefasEntity;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper (componentModel = "spring")
 
 public interface TarefaConverter {
@@ -12,4 +14,7 @@ public interface TarefaConverter {
 
     TarefasDTO paraTarefaDTO (TarefasEntity tarefasEntity);
 
+    List<TarefasEntity> paraListaTarefaEntity(List<TarefasDTO> tarefasDTO);
+
+    List<TarefasDTO> paraListaTarefaDTO(List<TarefasEntity> tarefasEntity);
 }
