@@ -5,7 +5,7 @@ import com.wilker.agendadortarefas.infrastructure.dto.mapper.TarefaConverter;
 import com.wilker.agendadortarefas.infrastructure.dto.mapper.TarefaUpdateConverter;
 import com.wilker.agendadortarefas.infrastructure.entity.TarefasEntity;
 import com.wilker.agendadortarefas.infrastructure.enums.StatusNotificacaoEnum;
-import com.wilker.agendadortarefas.infrastructure.excepiton.ResourceNotFoundException;
+import com.wilker.agendadortarefas.infrastructure.exception.ResourceNotFoundException;
 import com.wilker.agendadortarefas.infrastructure.repository.TarefasRepository;
 import com.wilker.agendadortarefas.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,7 @@ public class TarefasService {
 
         return tarefaConverter.paraTarefaDTO(tarefasRepository.save(tarefa));
     }
-    public List<TarefasDTO> buscarTarefaDeUmaData(LocalDateTime dataInicial, LocalDateTime dataFinal){
+    public List<TarefasDTO> buscaListaDeTarefaPorPeriodo(LocalDateTime dataInicial, LocalDateTime dataFinal){
        return tarefaConverter.paraListaTarefaDTO(
                tarefasRepository.findByDataEventoBetween(dataInicial, dataFinal));
 

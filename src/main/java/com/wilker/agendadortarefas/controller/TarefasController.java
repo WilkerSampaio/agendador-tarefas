@@ -29,7 +29,7 @@ public class TarefasController {
     public ResponseEntity<List<TarefasDTO>> buscaListaDeTarefaPorPeriodo(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime dataInicial,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime dataFinal){
-        return ResponseEntity.ok(tarefasService.buscarTarefaDeUmaData(dataInicial, dataFinal));
+        return ResponseEntity.ok(tarefasService.buscaListaDeTarefaPorPeriodo(dataInicial, dataFinal));
     }
 
     @GetMapping
