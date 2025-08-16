@@ -15,37 +15,34 @@ public class JwtUtil {
     // Chave secreta usada para assinar e verificar tokens JWT
     private final String secretKey = "IKASJUIHDUBwjansjndjnuwKKJMJSUIWUNNCKpasiiwJWJ";
 
+    // Converte a chave secreta em SecretKey para uso no JWT
     private SecretKey getSecretKey(){
         byte[] key = Base64.getDecoder().decode(secretKey);
         return Keys.hmacShaKeyFor(key);
     }
 
-    // Extrai as claims do token JWT (informações adicionais do token)
+    // Extrai as claims (informações contidas no token) do JWT
     public Claims extractClaims(String token) {
         return Jwts.parser()
-                .setSigningKey(secretKey) // Define a chave secreta para validar a assinatura do token
+                .setSigningKey(getSecretKey()) // Usa a SecretKey para validar a assinatura
                 .build()
                 .parseClaimsJws(token) // Analisa o token JWT e obtém as claims
                 .getBody(); // Retorna o corpo das claims
     }
 
-    // Extrai o nome de usuário do token JWT
+    // Extrai o nome de usuário (subject) do token JWT
     public String extractUsername(String token) {
-        // Obtém o assunto (nome de usuário) das claims do token
         return extractClaims(token).getSubject();
     }
 
     // Verifica se o token JWT está expirado
     public boolean isTokenExpired(String token) {
-        // Compara a data de expiração do token com a data atual
         return extractClaims(token).getExpiration().before(new Date());
     }
 
-    // Valida o token JWT verificando o nome de usuário e se o token não está expirado
+    // Valida o token JWT verificando o nome de usuário e se não está expirado
     public boolean validateToken(String token, String username) {
-        // Extrai o nome de usuário do token
         final String extractedUsername = extractUsername(token);
-        // Verifica se o nome de usuário do token corresponde ao fornecido e se o token não está expirado
         return (extractedUsername.equals(username) && !isTokenExpired(token));
     }
 }
