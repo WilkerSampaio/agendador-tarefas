@@ -1,7 +1,7 @@
 package com.wilker.agendadortarefas.infrastructure.client;
 
 
-import com.wilker.agendadortarefas.infrastructure.dto.UsuarioDTO;
+import com.wilker.agendadortarefas.infrastructure.dto.UsuarioDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface UsuarioClient {
 
     @GetMapping("/usuario")
-    UsuarioDTO buscarUsuarioPeloEmail(@RequestParam("email") String email,
-                                      @RequestHeader("Authorization") String token);
+    UsuarioDTOResponse buscarUsuarioPeloEmail(@RequestParam("email") String email,
+                                              @RequestHeader("Authorization") String token);
 
 }

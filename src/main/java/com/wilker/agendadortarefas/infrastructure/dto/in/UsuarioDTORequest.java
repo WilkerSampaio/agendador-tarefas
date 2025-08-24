@@ -1,8 +1,6 @@
-package com.wilker.agendadortarefas.infrastructure.dto;
+package com.wilker.agendadortarefas.infrastructure.dto.in;
 
 import lombok.*;
-
-import java.util.List;
 
 @Getter
 @Setter
@@ -10,7 +8,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 
-public class UsuarioDTO {
+public class UsuarioDTORequest {
 
     private String email;
     private String senha;

@@ -1,4 +1,4 @@
-package com.wilker.agendadortarefas.infrastructure.dto;
+package com.wilker.agendadortarefas.infrastructure.dto.in;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wilker.agendadortarefas.infrastructure.enums.StatusNotificacaoEnum;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-public class TarefasDTO {
+public class TarefasDTORequest {
 
     private String id;
     private String nomeTarefa;

@@ -1,6 +1,7 @@
 package com.wilker.agendadortarefas.controller;
 
-import com.wilker.agendadortarefas.infrastructure.dto.TarefasDTO;
+import com.wilker.agendadortarefas.infrastructure.dto.TarefasDTOResponse;
+import com.wilker.agendadortarefas.infrastructure.dto.in.TarefasDTORequest;
 import com.wilker.agendadortarefas.infrastructure.enums.StatusNotificacaoEnum;
 import com.wilker.agendadortarefas.service.TarefasService;
 import lombok.RequiredArgsConstructor;
@@ -20,20 +21,20 @@ public class TarefasController {
     private final TarefasService tarefasService;
 
     @PostMapping
-    public ResponseEntity<TarefasDTO> registraTarefa(@RequestBody TarefasDTO tarefasDTO,
-                                                     @RequestHeader ("Authorization") String token){
-        return ResponseEntity.ok(tarefasService.salvarTarefa(token, tarefasDTO));
+    public ResponseEntity<TarefasDTOResponse> registraTarefa(@RequestBody TarefasDTORequest tarefasDTORequest,
+                                                             @RequestHeader ("Authorization") String token){
+        return ResponseEntity.ok(tarefasService.salvarTarefa(tarefasDTORequest, token));
     }
 
     @GetMapping("/eventos")
-    public ResponseEntity<List<TarefasDTO>> buscaListaDeTarefaPorPeriodo(
+    public ResponseEntity<List<TarefasDTOResponse>> buscaListaDeTarefaPorPeriodo(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime dataInicial,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime dataFinal){
         return ResponseEntity.ok(tarefasService.buscaListaDeTarefaPorPeriodo(dataInicial, dataFinal));
     }
 
     @GetMapping
-    public ResponseEntity<List<TarefasDTO>> buscaTarefaPorEmail(@RequestHeader ("Authorization") String token){
+    public ResponseEntity<List<TarefasDTOResponse>> buscaTarefaPorEmail(@RequestHeader ("Authorization") String token){
         return ResponseEntity.ok(tarefasService.buscarTarefaPorEmail(token));
     }
 
@@ -44,17 +45,15 @@ public class TarefasController {
     }
 
     @PatchMapping
-    public ResponseEntity<TarefasDTO> alterarStatusTarefa(@RequestParam ("status")StatusNotificacaoEnum status,
-                                                          @RequestParam ("id") String id){
+    public ResponseEntity<TarefasDTOResponse> alterarStatusTarefa(@RequestParam ("status")StatusNotificacaoEnum status,
+                                                                  @RequestParam ("id") String id){
         return ResponseEntity.ok(tarefasService.alteraStatusTarefa(status, id));
     }
 
     @PutMapping
-    public ResponseEntity<TarefasDTO> alterarDadosTarefa(@RequestBody TarefasDTO tarefasDTO,
-                                                         @RequestParam ("id") String id){
-        return ResponseEntity.ok(tarefasService.alterarDadosTarefa(tarefasDTO, id));
+    public ResponseEntity<TarefasDTOResponse> alterarDadosTarefa(@RequestBody TarefasDTORequest tarefasDTORequest,
+                                                                 @RequestParam ("id") String id){
+        return ResponseEntity.ok(tarefasService.alterarDadosTarefa(tarefasDTORequest, id));
     }
-
-
 
 }
