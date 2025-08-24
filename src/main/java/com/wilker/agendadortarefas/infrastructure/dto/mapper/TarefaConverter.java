@@ -1,6 +1,7 @@
 package com.wilker.agendadortarefas.infrastructure.dto.mapper;
 
-import com.wilker.agendadortarefas.infrastructure.dto.TarefasDTO;
+import com.wilker.agendadortarefas.infrastructure.dto.TarefasDTOResponse;
+import com.wilker.agendadortarefas.infrastructure.dto.in.TarefasDTORequest;
 import com.wilker.agendadortarefas.infrastructure.entity.TarefasEntity;
 import org.mapstruct.Mapper;
 
@@ -10,11 +11,11 @@ import java.util.List;
 
 public interface TarefaConverter {
 
-    TarefasEntity paraTarefaEntity(TarefasDTO tarefasDTO);
+    TarefasEntity paraTarefaEntity(TarefasDTORequest tarefasDTORequest);
 
-    TarefasDTO paraTarefaDTO (TarefasEntity tarefasEntity);
+    TarefasDTOResponse paraTarefaDTO (TarefasEntity tarefasEntity);
 
-    List<TarefasEntity> paraListaTarefaEntity(List<TarefasDTO> tarefasDTO);
+    List<TarefasEntity> paraListaTarefaEntity(List<TarefasDTORequest> listaTarefasRequest);
 
-    List<TarefasDTO> paraListaTarefaDTO(List<TarefasEntity> tarefasEntity);
+    List<TarefasDTOResponse> paraListaTarefaDTO(List<TarefasEntity> tarefasEntity);
 }

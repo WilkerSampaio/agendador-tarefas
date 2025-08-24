@@ -1,7 +1,7 @@
 package com.wilker.agendadortarefas.infrastructure.security;
 
 import com.wilker.agendadortarefas.infrastructure.client.UsuarioClient;
-import com.wilker.agendadortarefas.infrastructure.dto.UsuarioDTO;
+import com.wilker.agendadortarefas.infrastructure.dto.UsuarioDTOResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,13 +16,12 @@ public class UserDetailsServiceImpl {
     // Carrega os dados do usuário pelo email, usando o token JWT para autorização
     public UserDetails carregaDadosUsuario(String email, String token){
         // Busca o usuário remoto via API
-        UsuarioDTO usuarioDTO = usuarioClient.buscarUsuarioPeloEmail(email, token);
+        UsuarioDTOResponse usuarioDTOResponse = usuarioClient.buscarUsuarioPeloEmail(email, token);
 
         // Constrói um UserDetails a partir dos dados recebidos
         return User
-                .withUsername(usuarioDTO.getEmail()) // Define o username como email
-                .password(usuarioDTO.getSenha())     // Define a senha (não usada diretamente para validação JWT)
-                .authorities("USER")                 // Pode-se adicionar roles, se necessário
+                .withUsername(usuarioDTOResponse.getEmail()) // Define o username como email
+                .password(usuarioDTOResponse.getSenha())     // Define a senha (não usada diretamente para validação JWT)
                 .build();
     }
 }
