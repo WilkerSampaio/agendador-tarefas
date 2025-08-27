@@ -1,9 +1,9 @@
 package com.wilker.agendadortarefas.service;
 
-import com.wilker.agendadortarefas.infrastructure.dto.TarefasDTOResponse;
+import com.wilker.agendadortarefas.infrastructure.dto.out.TarefasDTOResponse;
 import com.wilker.agendadortarefas.infrastructure.dto.in.TarefasDTORequest;
-import com.wilker.agendadortarefas.infrastructure.dto.mapper.TarefaConverter;
-import com.wilker.agendadortarefas.infrastructure.dto.mapper.TarefaUpdateConverter;
+import com.wilker.agendadortarefas.infrastructure.mapper.TarefaConverter;
+import com.wilker.agendadortarefas.infrastructure.mapper.TarefaUpdateConverter;
 import com.wilker.agendadortarefas.infrastructure.entity.TarefasEntity;
 import com.wilker.agendadortarefas.infrastructure.enums.StatusNotificacaoEnum;
 import com.wilker.agendadortarefas.infrastructure.exception.ResourceNotFoundException;

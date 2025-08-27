@@ -1,4 +1,4 @@
-package com.wilker.agendadortarefas.infrastructure.dto;
+package com.wilker.agendadortarefas.infrastructure.dto.out;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wilker.agendadortarefas.infrastructure.enums.StatusNotificacaoEnum;

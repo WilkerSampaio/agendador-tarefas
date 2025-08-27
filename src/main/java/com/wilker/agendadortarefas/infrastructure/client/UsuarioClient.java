@@ -1,7 +1,7 @@
 package com.wilker.agendadortarefas.infrastructure.client;
 
 
-import com.wilker.agendadortarefas.infrastructure.dto.UsuarioDTOResponse;
+import com.wilker.agendadortarefas.infrastructure.dto.out.UsuarioDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
