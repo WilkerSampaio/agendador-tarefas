@@ -1,6 +1,6 @@
 package com.wilker.agendadortarefas.controller;
 
-import com.wilker.agendadortarefas.infrastructure.dto.TarefasDTOResponse;
+import com.wilker.agendadortarefas.infrastructure.dto.out.TarefasDTOResponse;
 import com.wilker.agendadortarefas.infrastructure.dto.in.TarefasDTORequest;
 import com.wilker.agendadortarefas.infrastructure.enums.StatusNotificacaoEnum;
 import com.wilker.agendadortarefas.service.TarefasService;

@@ -1,6 +1,6 @@
-package com.wilker.agendadortarefas.infrastructure.dto.mapper;
+package com.wilker.agendadortarefas.infrastructure.mapper;
 
-import com.wilker.agendadortarefas.infrastructure.dto.TarefasDTOResponse;
+import com.wilker.agendadortarefas.infrastructure.dto.out.TarefasDTOResponse;
 import com.wilker.agendadortarefas.infrastructure.dto.in.TarefasDTORequest;
 import com.wilker.agendadortarefas.infrastructure.entity.TarefasEntity;
 import org.mapstruct.Mapper;
