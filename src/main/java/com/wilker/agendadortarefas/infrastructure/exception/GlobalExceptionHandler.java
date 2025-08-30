@@ -1,5 +1,6 @@
 package com.wilker.agendadortarefas.infrastructure.exception;
 
+import com.wilker.agendadortarefas.infrastructure.dto.out.ErrorDTOResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,13 +10,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<String> handleResourceNotFoundException (ResourceNotFoundException ex){
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    public ResponseEntity<ErrorDTOResponse> handleResourceNotFoundException (ResourceNotFoundException ex){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorDTOResponse(ex.getMessage()));
     }
 
     @ExceptionHandler(UnauthorizedException.class)
-    public ResponseEntity<String> handleResourceNotFoundException (UnauthorizedException ex){
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<ErrorDTOResponse> handleUnauthorizedException (UnauthorizedException ex){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorDTOResponse(ex.getMessage()));
     }
 
 
