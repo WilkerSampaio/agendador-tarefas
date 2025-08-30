@@ -3,6 +3,7 @@ package com.wilker.agendadortarefas.infrastructure.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -13,7 +14,8 @@ import java.util.Date;
 public class JwtUtil {
 
     // Chave secreta usada para assinar e verificar tokens JWT
-    private final String secretKey = "IKASJUIHDUBwjansjndjnuwKKJMJSUIWUNNCKpasiiwJWJ";
+    @Value("${chave.secreta}")
+    private String secretKey;
 
     // Converte a chave secreta em SecretKey para uso no JWT
     private SecretKey getSecretKey(){
